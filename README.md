@@ -131,7 +131,7 @@ Only the admin account exists without `--demo`. These are **local development cr
 ## Project structure
 
 ```
-CRM_Product/
+Github_Opensource/
 ├── backend/                    FastAPI app
 │   ├── app/
 │   │   ├── main.py             App entry point: creates tables, registers routers, starts reminder loop

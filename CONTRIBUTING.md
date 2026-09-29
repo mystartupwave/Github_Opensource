@@ -67,27 +67,26 @@ bottom and you'll end up with a real pull request (PR) on a real product.
 ## Step 1: Fork and clone
 
 1. On this repo's GitHub page, click **Fork** (top right), then **Create fork**.
-   You now have `https://github.com/<your-username>/CRM_Product`.
+   You now have `https://github.com/<your-username>/Github_Opensource`.
 2. Clone **your fork** (not the upstream) to your computer:
 
    ```bash
-   git clone https://github.com/<your-username>/CRM_Product.git
-   cd CRM_Product
+   git clone https://github.com/<your-username>/Github_Opensource.git
+   cd Github_Opensource
    ```
 
 3. Connect your clone to the upstream repo, so you can pull in other people's changes later:
 
    ```bash
-   git remote add upstream https://github.com/<upstream-owner>/CRM_Product.git
+   git remote add upstream https://github.com/mystartupwave/Github_Opensource.git
    git remote -v
    ```
 
-   Replace `<upstream-owner>` with the account or organisation that owns the original repo (it's in
-   the URL of the page you forked from). `git remote -v` should now list both remotes:
+   `git remote -v` should now list both remotes:
 
    ```
-   origin    https://github.com/<your-username>/CRM_Product.git   ← your fork
-   upstream  https://github.com/<upstream-owner>/CRM_Product.git  ← the original
+   origin    https://github.com/<your-username>/Github_Opensource.git   ← your fork
+   upstream  https://github.com/mystartupwave/Github_Opensource.git  ← the original
    ```
 
 ## Step 2: Run the project
