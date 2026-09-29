@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Contributing guide
+    url: https://github.com/mystartupwave/CRM_Product/blob/master/CONTRIBUTING.md
+    about: New here? Start with the step-by-step guide.
