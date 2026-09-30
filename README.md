@@ -6,6 +6,9 @@ open-source workshops, where students make their first real pull request on a wo
 - **Backend:** Python, [FastAPI](https://fastapi.tiangolo.com/), SQLAlchemy, SQLite
 - **Frontend:** [Next.js 15](https://nextjs.org/) (App Router), React 19, TypeScript, Tailwind CSS 4
 
+> **Issue [#2](../../issues/2):** Add docstrings to every public function in `backend/app/services.py`.
+> See the issue for details and claim it by commenting.
+
 > **New to open source?** Start with [CONTRIBUTING.md](CONTRIBUTING.md). It walks you from
 > "I have never made a pull request" to a merged contribution, one command at a time.
 > Then pick a task from [docs/GOOD_FIRST_ISSUES.md](docs/GOOD_FIRST_ISSUES.md).
