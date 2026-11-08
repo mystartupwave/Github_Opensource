@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
@@ -36,12 +36,41 @@ function Shell({ children }: { children: React.ReactNode }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [newOpen, setNewOpen] = useState(false);
   const [q, setQ] = useState("");
-
+  const searchRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (!loading && !me) router.replace("/login");
   }, [loading, me, router]);
 
   useEffect(() => setDrawerOpen(false), [pathname, search]);
+  useEffect(() => {
+  function handleKeyDown(event: KeyboardEvent) {
+    const target = event.target;
+
+    // Don't trigger while typing in editable elements
+    if (
+      target instanceof HTMLElement &&
+      (
+        target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.tagName === "SELECT" ||
+        target.isContentEditable
+      )
+    ) {
+      return;
+    }
+
+    if (event.key === "/") {
+      event.preventDefault();
+      searchRef.current?.focus();
+    }
+  }
+
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+  };
+}, []);
 
   if (loading || !me || !meta) return <PageLoader />;
 
@@ -177,13 +206,17 @@ function Shell({ children }: { children: React.ReactNode }) {
           >
             <Search className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-slate-400" />
             <input
-              className="input border-transparent bg-slate-100 pl-9 focus:bg-white"
+              ref={searchRef}
+              className="input border-transparent bg-slate-100 pl-9 pr-10 focus:bg-white"
               type="search"
               enterKeyHint="search"
               placeholder="Search name, phone, LD-ID…"
               value={q}
               onChange={(e) => setQ(e.target.value)}
-            />
+              />
+            <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center rounded border border-slate-300 bg-white px-1.5 py-0.5 text-xs font-medium text-slate-400 sm:inline-flex">
+                /
+            </span>
           </form>
           <div className="ml-auto flex shrink-0 items-center gap-1">
             {can("leads.create") && (
